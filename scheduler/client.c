@@ -878,23 +878,23 @@ cupsdReadClient(cupsd_client_t *con)	/* I - Client to read from */
 	return;
       }
     }
-    else if (!valid_host(con))
-    {
-     /*
-      * Access to localhost must use "localhost" or the corresponding IPv4
-      * or IPv6 values in the Host: field.
-      */
+  //   else if (!valid_host(con))
+  //   {
+  //    /*
+  //     * Access to localhost must use "localhost" or the corresponding IPv4
+  //     * or IPv6 values in the Host: field.
+  //     */
 
-      cupsdLogClient(con, CUPSD_LOG_ERROR,
-                     "Request from \"%s\" using invalid Host: field \"%s\".",
-                     httpGetHostname(con->http, NULL, 0), httpGetField(con->http, HTTP_FIELD_HOST));
+  //     cupsdLogClient(con, CUPSD_LOG_ERROR,
+  //                    "Request from \"%s\" using invalid Host: field \"%s\".",
+  //                    httpGetHostname(con->http, NULL, 0), httpGetField(con->http, HTTP_FIELD_HOST));
 
-      if (!cupsdSendError(con, HTTP_STATUS_BAD_REQUEST, CUPSD_AUTH_NONE))
-      {
-	cupsdCloseClient(con);
-	return;
-      }
-    }
+  //     if (!cupsdSendError(con, HTTP_STATUS_BAD_REQUEST, CUPSD_AUTH_NONE))
+  //     {
+	// cupsdCloseClient(con);
+	// return;
+  //     }
+  //   }
     else if (con->operation == HTTP_STATE_OPTIONS)
     {
      /*
